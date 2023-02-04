@@ -66,8 +66,8 @@ getCustomerData().setUsage(1920, 2016, 1, 1234);
 
 // 讀取範例
 function compareUsage(customID, laterYear, month) {
-  const later = getCustomerData().usage(customID, laterYear, month);
-  const earlier = getCustomerData().usage(customID, laterYear - 1, month);
+  const later = getCustomerData().rawData[customID].usages[laterYear][month];
+  const earlier = getCustomerData().rawData[customID].usages[laterYear - 1][month];
   return {
     laterAmount: later,
     change: later - earlier,
