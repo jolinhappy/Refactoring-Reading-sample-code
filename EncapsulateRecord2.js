@@ -48,9 +48,12 @@ function setRawDataOfCustomers(arg) {
   customerData = new CustomerData(arg);
 }
 
-// 更新資料的用法一樣不變
-// getRawDataOfCustomers()[customerID].usages[year][month] = amount;
-getRawDataOfCustomers()[1920].usages[2016][1] = 1000000;
+// 新增更新 customer裡usages的函式
+function setUsage(customerID, year, month, amount) {
+  getRawDataOfCustomers()[customerID].usages[year][month] = amount;
+}
+// 更新時的用法調整如下
+setUsage(1920, 2016, 1, 1234);
 
 // 讀取範例
 function compareUsage(customID, laterYear, month) {
