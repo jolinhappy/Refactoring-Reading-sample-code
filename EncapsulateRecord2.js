@@ -29,17 +29,26 @@ const jsonData = {
   }
 }
 
+class CustomerData {
+  constructor(data) {
+    this._data = data;
+  }
+}
 let customerData;
 setRawDataOfCustomers(jsonData);
 
-function getRawDataOfCustomers() {
+function getCustomerData() {
   return customerData;
 }
+
+function getRawDataOfCustomers() {
+  return customerData._data;
+}
 function setRawDataOfCustomers(arg) {
-  customerData = arg;
+  customerData = new CustomerData(arg);
 }
 
-// 更新範例
+// 更新資料的用法一樣不變
 // getRawDataOfCustomers()[customerID].usages[year][month] = amount;
 getRawDataOfCustomers()[1920].usages[2016][1] = 1000000;
 
