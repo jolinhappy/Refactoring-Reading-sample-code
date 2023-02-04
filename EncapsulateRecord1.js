@@ -1,14 +1,21 @@
-// 一般紀錄
 class Organization {
   constructor(data) {
-    this._data = data;
+    // 將＿data欄位和物件融合
+    this._name = data.name;
+    this._country = data.country;
   }
   // 加入set 和 get
   get name() {
-    return this._data.name;
+    return this._name;
   }
   set name(aString) {
-    this._data.name = aString;
+    this._name = aString;
+  }
+  get country() {
+    return this._country;
+  }
+  set country(aCountryCode) {
+    this._country = aCountryCode;
   }
 }
 
@@ -20,12 +27,7 @@ let result = '';
 // 讀取時
 result += `<h1>${getOrganization().name}</h1>`;
 
-// 用好查詢的名稱命名這個取得紀錄的函式
-function getRawDataOfOrganization() {
-  // 替換成取得class裡面的data
-  return organization._data;
-}
-// 也補上取得class物件的function
+// 只保留這個函式
 function getOrganization() {
   return organization;
 }
