@@ -29,17 +29,24 @@ const jsonData = {
   }
 }
 
-const customerData = jsonData;
+let customerData;
+setRawDataOfCustomers(jsonData);
+
+function getRawDataOfCustomers() {
+  return customerData;
+}
+function setRawDataOfCustomers(arg) {
+  customerData = arg;
+}
 
 // 更新範例
-// customerData[customID].usages[year][month] = amount;
-customerData[1920].usages[2016][1] = 1000000;
-
+// getRawDataOfCustomers()[customerID].usages[year][month] = amount;
+getRawDataOfCustomers()[1920].usages[2016][1] = 1000000;
 
 // 讀取範例
 function compareUsage(customID, laterYear, month) {
-  const later = customerData[customID].usages[laterYear][month];
-  const earlier = customerData[customID].usages[laterYear - 1][month];
+  const later = getRawDataOfCustomers()[customID].usages[laterYear][month];
+  const earlier = getRawDataOfCustomers()[customID].usages[laterYear - 1][month];
   return {
     laterAmount: later,
     change: later - earlier,
