@@ -33,6 +33,9 @@ class CustomerData {
   constructor(data) {
     this._data = data;
   }
+  setUsage(customerID, year, month, amount) {
+    this._data[customerID].usages[year][month] = amount;
+  }
 }
 let customerData;
 setRawDataOfCustomers(jsonData);
@@ -52,8 +55,8 @@ function setRawDataOfCustomers(arg) {
 function setUsage(customerID, year, month, amount) {
   getRawDataOfCustomers()[customerID].usages[year][month] = amount;
 }
-// 更新時的用法調整如下
-setUsage(1920, 2016, 1, 1234);
+// 更新時的用法再次調整成以下這樣
+getCustomerData().setUsage(1920, 2016, 1, 1234);
 
 // 讀取範例
 function compareUsage(customID, laterYear, month) {
