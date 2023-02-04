@@ -3,6 +3,13 @@ class Organization {
   constructor(data) {
     this._data = data;
   }
+  // 加入set 和 get
+  get name() {
+    return this._data.name;
+  }
+  set name(aString) {
+    this._data.name = aString;
+  }
 }
 
 const organization = new Organization({
@@ -11,7 +18,7 @@ const organization = new Organization({
 });
 let result = '';
 // 讀取時
-result += `<h1>${getRawDataOfOrganization().name}</h1>`;
+result += `<h1>${getOrganization().name}</h1>`;
 
 // 用好查詢的名稱命名這個取得紀錄的函式
 function getRawDataOfOrganization() {
@@ -23,4 +30,4 @@ function getOrganization() {
   return organization;
 }
 // 想要進行更新的話
-getRawDataOfOrganization().name = 'Hebe';
+getOrganization().name = 'Hebe';
