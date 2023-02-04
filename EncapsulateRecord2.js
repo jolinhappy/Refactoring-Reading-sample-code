@@ -39,6 +39,9 @@ class CustomerData {
   setUsage(customerID, year, month, amount) {
     this._data[customerID].usages[year][month] = amount;
   }
+  usage(customerID, year, month) {
+    return this._data[customerID].usages[year][month];
+  }
 }
 let customerData;
 setRawDataOfCustomers(jsonData);
@@ -63,8 +66,8 @@ getCustomerData().setUsage(1920, 2016, 1, 1234);
 
 // 讀取範例
 function compareUsage(customID, laterYear, month) {
-  const later = getRawDataOfCustomers()[customID].usages[laterYear][month];
-  const earlier = getRawDataOfCustomers()[customID].usages[laterYear - 1][month];
+  const later = getCustomerData().usage(customID, laterYear, month);
+  const earlier = getCustomerData().usage(customID, laterYear - 1, month);
   return {
     laterAmount: later,
     change: later - earlier,
