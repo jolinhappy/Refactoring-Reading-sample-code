@@ -1,7 +1,13 @@
 class Order {
   constructor(data) {
-    this.priority = data.priority;
+    this._priority = data.priority;
     // 更多初始化
+  }
+  get priority() {
+    return this._priority;
+  }
+  set priority(aString) {
+    this._priority = aString;
   }
 }
 
