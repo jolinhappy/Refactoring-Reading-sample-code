@@ -13,6 +13,9 @@ class Order {
     this._priority = data.priority;
     // 更多初始化
   }
+  get priority() {
+    return this._priority;
+  }
   get priorityString() {
     return this._priority.toString();
   }
