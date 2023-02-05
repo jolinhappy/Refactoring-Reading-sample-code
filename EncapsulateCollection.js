@@ -9,9 +9,6 @@ class Person {
   get courses() {
     return this._courses;
   }
-  set courses(aList) {
-    return this._courses = aList;
-  }
   // 改成改動的動作都是在這個class裡面做改動，不是從外面直接進來改
   addCourse(aCourse) {
     this._courses.push(aCourse);
