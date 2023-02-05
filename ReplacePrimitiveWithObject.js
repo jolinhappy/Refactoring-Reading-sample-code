@@ -13,7 +13,7 @@ class Order {
     this._priority = data.priority;
     // 更多初始化
   }
-  get priority() {
+  get priorityString() {
     return this._priority.toString();
   }
   set priority(aString) {
@@ -31,4 +31,4 @@ const orderList = [
 const orders = orderList.map(data => new Order({priority: new Priority(data.priority)}));
 
 // 使用方
-highPriority = orders.filter(o => 'high' === o.priority || 'rush' === o.priority).length;
+highPriority = orders.filter(o => 'high' === o.priorityString || 'rush' === o.priorityString).length;
