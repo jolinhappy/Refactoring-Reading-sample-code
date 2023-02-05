@@ -7,7 +7,11 @@ class Person {
     return this._name;
   }
   get courses() {
-    return this._courses;
+    return this._courses.slice();
+  }
+  // 因為api的一些需求，會讓set方法變成放入集合副本的方式
+  set courses(aList) {
+    return this._courses = aList.slice();
   }
   // 改成改動的動作都是在這個class裡面做改動，不是從外面直接進來改
   addCourse(aCourse) {
