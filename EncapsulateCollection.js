@@ -12,6 +12,16 @@ class Person {
   set courses(aList) {
     return this._courses = aList;
   }
+  // 改成改動的動作都是在這個class裡面做改動，不是從外面直接進來改
+  addCourse(aCourse) {
+    this._courses.push(aCourse);
+  }
+  removeCourse(aCourse, fnIfAbsent = () => {throw new RangeError();}) {
+    const index = this._course.indexOf(aCourse);
+    // 有針對要移除不存在的course時，做跳錯的處理
+    if (index === -1) fnIfAbsent();
+    else this.courses.splice(index, 1);
+  }
 }
 
 class Course {
@@ -34,7 +44,7 @@ function readBasicCourseNames(filename) {
 
   // 讀取檔案或從資料庫中獲取基礎課程的名稱的程式碼
   // ...
-  // basicCourseNames = ['Math', 'English', 'History'];
+  basicCourseNames = ['Math', 'English', 'History'];
   return basicCourseNames;
 }
 
@@ -47,11 +57,9 @@ let basicCourseNames = ['Math', 'English', 'History'];
 
 // 使用方的程式碼如下：
 
-// 可以利用set改動整個陣列
-aPerson.courses = basicCourseNames.map(name => new Course(name, false));
-// 也有可能會有人覺得直接改課程的陣列更間單
+// 把直接改集合的程式碼改成新方法
 for(const name of readBasicCourseNames('filename')) {
-  aPerson.courses.push(new Course(name, false));
+  aPerson.addCourse(new Course(name, false));
 }
 
 // 使用方使用courses集合來取得課程資訊
